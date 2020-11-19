@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LZ Adventskalender</title>
-    <link>http://leistungs-zentrum.de/adventskalender/</link>
+    <link>http://leistungszentrum.github.io/adventskalender/</link>
     <description>Recent content on LZ Adventskalender</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de</language><atom:link href="http://leistungs-zentrum.de/adventskalender/index.xml" rel="self" type="application/rss+xml" />
+    <language>de</language><atom:link href="http://leistungszentrum.github.io/adventskalender/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
