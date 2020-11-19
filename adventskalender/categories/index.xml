@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on LZ Adventskalender</title>
-    <link>http://leistungszentrum.github.io/adventskalender/categories/</link>
+    <link>https://leistungszentrum.github.io/adventskalender/categories/</link>
     <description>Recent content in Categories on LZ Adventskalender</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>de</language><atom:link href="http://leistungszentrum.github.io/adventskalender/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>de</language><atom:link href="https://leistungszentrum.github.io/adventskalender/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
