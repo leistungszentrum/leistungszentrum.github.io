@@ -45,12 +45,14 @@ body {
     box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4);
 }
 .whereby {
-    background: #ffc000;
     width: 100%;
     float: left;
     height: 50%;
     overflow: hidden;
     position: relative;
+}
+whereby-embed {
+    height: 100%;
 }
 .og-expander {
     background: #ebf4ff;
