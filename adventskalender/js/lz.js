@@ -6,9 +6,9 @@ $(function() {
     const zoomMeeting = $('#zmmtg-root');
 
     const meetConfig = {
-      apiKey: 'o9hRXrPHRQ-tu89Y4-xqrQ',
-      meetingNumber: 87811285418,
-      leaveUrl: 'https://yoursite.com/meetingEnd',
+      apiKey: 'H1tDmVH2Rg6lTTNO2xyeVw',
+      meetingNumber: 84931118612,
+      leaveUrl: 'https://leistungszentrum.github.io/adventskalender/',
       userName: 'Firstname Lastname',
       userEmail: 'firstname.lastname@yoursite.com',
       passWord: '1234', // if required
