@@ -618,8 +618,9 @@ if (!doNotTrack) {
 									self.$loading.delay(500).hide();
 									$iframe.delay(500).fadeIn( 350 );
 								});
+							this.$jitsi.empty();
 							this.$jitsi.append(this.$loading);
-							startMeeting('.jitsi', 'global');
+							startMeeting('.jitsi', eldata.title);
 						}
 					},
 					open : function() {
