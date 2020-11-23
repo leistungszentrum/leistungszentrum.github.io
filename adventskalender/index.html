@@ -257,21 +257,9 @@ if (!doNotTrack) {
 </footer>
 			</div>
 		</div>
-				
-		<script src="https://source.zoom.us/1.8.1/lib/vendor/react.min.js"></script>
-		<script src="https://source.zoom.us/1.8.1/lib/vendor/react-dom.min.js"></script>
-		<script src="https://source.zoom.us/1.8.1/lib/vendor/redux.min.js"></script>
-		<script src="https://source.zoom.us/1.8.1/lib/vendor/redux-thunk.min.js"></script>
-		<script src="https://source.zoom.us/1.8.1/lib/vendor/jquery.min.js"></script>
-		<script src="https://source.zoom.us/1.8.1/lib/vendor/lodash.min.js"></script>
-	
-		
-		<script src="https://source.zoom.us/zoom-meeting-1.8.1.min.js"></script>
-		
-		
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src='https://meet.jit.si/external_api.js'></script>
 		<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-		
 		
 		
 		<script src="https://leistungszentrum.github.io/adventskalender/js/lz.js"></script>
@@ -632,39 +620,41 @@ if (!doNotTrack) {
 									self.$loading.delay(500).hide();
 									$iframe.delay(500).fadeIn( 350 );
 								});
-							$username = $(`
-								<div class="doorjoin">
-								<div class="doorjoin-inner">
-								<div class="form">
-								<input class="doorjoin-name" type="text" name="name" autocomplete="off" required />
-								<label for="name" class="label-name">
-									<span class="content-name">Name</span>
-								</label>
-								</div>
-								<button type="button" class="btn btn-primary join-btn" disabled></button>
-								</div>
-								</div>
-							`);
-							this.$zoom.append($username);
-							$username.find('.doorjoin-name').on('input', function() {
-								var name = $(this).val();
-								if (name != '') {
-									$username.find('.join-btn').attr('disabled', false);
-								} else {
-									$username.find('.join-btn').attr('disabled', true);
-								}
-							});
-							$('.join-btn').click(function() {
-								$username.fadeOut( 350 );
-								self.$zoom
-									.append($('#zmmtg-root'))
-									.ready(function () {
-										$('#zmmtg-root').show();
-										self.$loading.delay(500).hide();
-										self.$zoom.delay(500).fadeIn( 350 );
-										startMeeting($('.doorjoin-name').val());
-									});
-							});
+							this.$zoom.append(this.$loading);
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 						}
 
 					},

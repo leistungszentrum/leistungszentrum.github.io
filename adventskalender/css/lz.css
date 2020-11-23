@@ -61,29 +61,6 @@ body {
     -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4); 
     box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4);
 }
-#zmmtg-root {
-    display: none;
-}
-#zmmtg-root, .meeting-client, .meeting-client-inner, .meeting-app {
-    width: 100% !important;
-    height: 100% !important;
-    position: relative !important;
-  }
-#wc-footer {
-    /* bottom: auto !important; */
-    width: 100% !important;
-    /* display: none; */
-}
-#dialog-join {
-    width: 100% !important;
-}
-#sv-active-video, .active-main, #sv-active-speaker-view, .main-layout {
-    height: 100% !important;
-    width: 100% !important;
-}
-/* .suspension-window {
-    transform: translate(-444px, 10px) !important;
-} */
 .og-expander {
     background: #ebf4ff;
 }

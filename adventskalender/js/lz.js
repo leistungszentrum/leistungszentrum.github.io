@@ -3,59 +3,19 @@ console.log('Loading LZ...');
 $(function() {
     var now = new Date();
 
-    const zoomMeeting = $('#zmmtg-root');
-
-    const meetConfig = {
-      apiKey: 'H1tDmVH2Rg6lTTNO2xyeVw',
-      meetingNumber: 84931118612,
-      leaveUrl: 'https://leistungszentrum.github.io/adventskalender/',
-      userName: 'Firstname Lastname',
-      userEmail: 'firstname.lastname@yoursite.com',
-      passWord: '1234', // if required
-      role: 0 // 1 for host; 0 for attendee
-    };
-
-    function getSignature(meetConfig) {
-      const data = { meetingNumber: meetConfig.meetingNumber, role: meetConfig.role };
-      fetch('https://lz-adventskalender.herokuapp.com/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        })
-        .then(result => result.json())
-        .then(response => {
-          ZoomMtg.init({
-            leaveUrl: meetConfig.leaveUrl,
-            isSupportAV: true,
-            isSupportChat: false,
-            disableJoinAudio: true,
-            screenShare: false,
-            success: function() {
-              ZoomMtg.join({
-                meetingNumber: meetConfig.meetingNumber,
-                userName: meetConfig.userName,
-                userEmail: meetConfig.userEmail,
-                signature: response.signature,
-                apiKey: meetConfig.apiKey,
-                passWord: meetConfig.passWord,
-                success: (success) => {
-                  console.log(success)
-                },
-                error: (error) => {
-                  console.log(error)
-                }
-              })		
-            }
-          })
-      })
-    }
-    window.startMeeting = function(username) {
+    window.startMeeting = function(target) {
       console.log('starting meeting...');
-      meetConfig.userName = username;
-      meetConfig.userEmail = username + '@leistungs-zentrum.de';
-      getSignature(meetConfig);
+      const jitsi_options = {
+        roomName: 'LZ Adventskalender 2',
+        parentNode: document.querySelector(target),
+        width: '100%',
+        height: '100%',
+        interfaceConfigOverwrite: { TOOLBAR_BUTTONS: [
+            'microphone', 'camera']
+        }
+    };
+  
+    const api = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)  
       console.log('meeting is on!');
     }
 
@@ -258,9 +218,6 @@ $(function() {
         "retina_detect": true
       });
     console.log('LZ ready!')
-
-    ZoomMtg.preLoadWasm();
-    ZoomMtg.prepareJssdk();
 });
 
 
