@@ -455,15 +455,14 @@ if (!doNotTrack) {
 					initItemsEvents( $items );
 					
 					$window.on( 'debouncedresize', function() {
-						
-						
-						
-						
-						
-						
-						
-						
-						
+						scrollExtra = 0;
+						previewPos = -1;
+						saveItemInfo();
+						getWinSize();
+						var preview = $.data( this, 'preview' );
+						if( typeof preview != 'undefined' ) {
+							hidePreview();
+						}
 
 					} );
 
