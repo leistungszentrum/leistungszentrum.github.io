@@ -3,19 +3,30 @@ console.log('Loading LZ...');
 $(function() {
     var now = new Date();
 
-    window.startMeeting = function(target) {
+    window.startMeeting = function(target, room) {
       console.log('starting meeting...');
       const jitsi_options = {
-        roomName: 'LZ Adventskalender 2',
+        roomName: 'LZ Adventskalender ' + room,
         parentNode: document.querySelector(target),
         width: '100%',
         height: '100%',
-        interfaceConfigOverwrite: { TOOLBAR_BUTTONS: [
-            'microphone', 'camera']
+        interfaceConfigOverwrite: {
+          TOOLBAR_BUTTONS: [
+            'microphone', 'camera'
+          ],
+          MOBILE_APP_PROMO: false,
+          SHOW_BRAND_WATERMARK: false,
+          DEFAULT_BACKGROUND: '#474747',
+          SHOW_JITSI_WATERMARK: false,
+          // JITSI_WATERMARK_LINK: '',
+          // BRAND_WATERMARK_LINK: '',
+          // DEFAULT_LOGO_URL: '',
+        },
+        onload: function() {
+          $('.jitsi').find('.og-loading').remove();
         }
-    };
-  
-    const api = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)  
+      }
+      const api = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)
       console.log('meeting is on!');
     }
 

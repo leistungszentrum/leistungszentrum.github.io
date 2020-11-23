@@ -50,7 +50,7 @@ body {
     -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4); 
     box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4);
 }
-.zoom {
+.jitsi {
     width: 100%;
     float: left;
     height: 60%;
@@ -60,6 +60,10 @@ body {
     border-radius: 25px;
     -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4); 
     box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4);
+    background: url(../images/lz/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .og-expander {
     background: #ebf4ff;
@@ -190,10 +194,6 @@ body {
     --active-color: #ffffff;
 }
 .doorjoin {
-    background: url(../images/lz/bg.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     width:100%;
     height:100%;
     display: flex;
@@ -259,14 +259,4 @@ body {
 .form input:focus + .label-name::after,
 .form input:valid + .label-name::after {
     transform: translateX(0%);
-}
-.join-btn {
-    position: relative;
-    top: 20px;
-    left: 10px;
-    background-image : url(../images/lz/zoom.png);
-    background-size: cover;
-    display: inline-block;
-    height: 30px;
-    width: 30px;
 }
