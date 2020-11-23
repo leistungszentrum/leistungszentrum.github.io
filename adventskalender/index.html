@@ -14,8 +14,6 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
 		<link rel="manifest" href="favicon_io/site.webmanifest">
 		<meta name="generator" content="Hugo 0.78.2" />
-		<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.1/css/bootstrap.css" />
-		<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.1/css/react-select.css" />
 		<style>
 		body {
 		background: #bbd9ec;
@@ -538,9 +536,9 @@ if (!doNotTrack) {
 						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
 						this.$loading = $( '<div class="og-loading"></div>' );
 						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
-						this.$zoom = $( '<div class="zoom"></div>' );
+						this.$jitsi = $( '<div class="jitsi"><div class="og-loading"></div></div>' );
 						this.$closePreview = $( '<span class="og-close"></span>' );
-						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details, this.$zoom );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details, this.$jitsi );
 						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
 						this.$item.append( this.getEl() );
 						if( support ) {
@@ -620,43 +618,9 @@ if (!doNotTrack) {
 									self.$loading.delay(500).hide();
 									$iframe.delay(500).fadeIn( 350 );
 								});
-							this.$zoom.append(this.$loading);
-							startMeeting('.zoom');
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
+							this.$jitsi.append(this.$loading);
+							startMeeting('.jitsi', 'global');
 						}
-
 					},
 					open : function() {
 
