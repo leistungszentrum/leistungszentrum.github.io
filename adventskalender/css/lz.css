@@ -42,6 +42,9 @@ body {
     -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4); 
     box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4);
 }
+.today {
+    border: 5px solid red !important;
+}
 .og-fullimg {
     border-radius: 25px;
     -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.4); 
@@ -98,20 +101,31 @@ body {
 	.og-details { float: left; width: 100%; }
 }
 .og-details {
-    padding: 0 40px 0 60px;
+    padding: 0 1vw 0 4%;
     font-family: 'Indie Flower', cursive;
 }
 .og-details h3 {
     font-weight: 300;
-    font-size: 72px;
+    font-size: 5vw;
     padding: 0px 0 10px;
+    margin-top: 5px;
     margin-bottom: 0px;
 }
 .og-details p {
     font-weight: 400;
-    font-size: 22px;
-    line-height: 32px;
+    font-size: 2vw;
+    line-height: 2.5vw;
     color: #999;
+}
+@media screen and (max-width: 650px) {
+    .og-details { padding: 0 1vw 0 10%; }
+    .og-details h3 { font-size: 8vw; }
+    .og-details p { font-size: 3vw; line-height: 3.75vw; }
+}
+@media screen and (min-width: 1500px) {
+    .og-details { padding: 0 1vw 0 4%; }
+    .og-details h3 { font-size: 76px; }
+    .og-details p { font-size: 32px; line-height: 40px; }
 }
 .og-fullimg, .og-details {
     width: 50%;
@@ -151,7 +165,7 @@ body {
        -moz-transition: border 1s linear, box-shadow 1s linear;
             transition: border 1s linear, box-shadow 1s linear;
 }
-.next.glow {
+.doorthumb.glow {
     -webkit-box-shadow: 0 0 15px 20px rgb(177, 20, 20);
        -moz-box-shadow: 0 0 15px 20px rgb(177, 20, 20);
             box-shadow: 0 0 15px 20px rgb(177, 20, 20);
@@ -163,8 +177,8 @@ body {
     font-size: 20px;
     font-weight: bold;
     width: 90px;
-    bottom: 5px;
-    right: 5px;
+    bottom: 15px;
+    right: 10px;
 }
 #timer span {
     display: block;

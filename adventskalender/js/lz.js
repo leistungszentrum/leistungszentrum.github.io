@@ -5,9 +5,6 @@ $(function() {
 
     const zoomMeeting = $('#zmmtg-root');
 
-    ZoomMtg.preLoadWasm();
-    ZoomMtg.prepareJssdk();
-
     const meetConfig = {
       apiKey: 'o9hRXrPHRQ-tu89Y4-xqrQ',
       meetingNumber: 87811285418,
@@ -67,7 +64,7 @@ $(function() {
 
     function openDoor() {
         console.log('Opening door!')
-        $('.next').toggleClass('glow');
+        $('.next').toggleClass('glow').removeClass('today');
         var glowing = window.setInterval(function() {  
             $('.next').toggleClass('glow');
         }, 2000);
@@ -86,16 +83,20 @@ $(function() {
     $('.door').each(function(index) {
       var opentime = new Date($(this).data('time'));
       var opendiff = opentime - now;
-      var istoday = dayOfYear(opentime) == dayOfYear(now)     
+      var istoday = dayOfYear(opentime) == dayOfYear(now)
+      // console.log(index, $(this).data('time'), now, opentime, opendiff, istoday);
       if (opendiff < 0) {
         if (istoday) {
-          $(this).find('.doorthumb').removeClass('inactive');
+          $(this).find('.doorthumb').removeClass('inactive').addClass('glow');
         } else {
           $(this).find('.crossed').removeClass('hidden');
           $(this).find('.doorthumb').removeClass('inactive');
         }
       } else if (isNaN(opendiff) || opendiff > 0) {
         $(this).addClass('inactivelink');
+        if (istoday) {
+          $(this).find('.doorthumb').addClass('today');
+        }
         if (nextdoor < 0 && !isNaN(opendiff)) {
           nextdoor = index;
           $(this).find('.doorthumb').addClass('next');
@@ -168,7 +169,7 @@ $(function() {
               "nb_sides": 5
             },
             "image": {
-              "src": "http://www.dynamicdigital.us/wp-content/uploads/2013/02/starburst_white_300_drop_2.png",
+              "src": "images/lz/starburst_white_300_drop_2.png",
               "width": 100,
               "height": 100
             }
@@ -257,6 +258,9 @@ $(function() {
         "retina_detect": true
       });
     console.log('LZ ready!')
+
+    ZoomMtg.preLoadWasm();
+    ZoomMtg.prepareJssdk();
 });
 
 
