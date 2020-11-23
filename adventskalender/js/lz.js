@@ -3,6 +3,65 @@ console.log('Loading LZ...');
 $(function() {
     var now = new Date();
 
+    const zoomMeeting = $('#zmmtg-root');
+
+    ZoomMtg.preLoadWasm();
+    ZoomMtg.prepareJssdk();
+
+    const meetConfig = {
+      apiKey: 'o9hRXrPHRQ-tu89Y4-xqrQ',
+      meetingNumber: 87811285418,
+      leaveUrl: 'https://yoursite.com/meetingEnd',
+      userName: 'Firstname Lastname',
+      userEmail: 'firstname.lastname@yoursite.com',
+      passWord: '1234', // if required
+      role: 0 // 1 for host; 0 for attendee
+    };
+
+    function getSignature(meetConfig) {
+      const data = { meetingNumber: meetConfig.meetingNumber, role: meetConfig.role };
+      fetch('https://lz-adventskalender.herokuapp.com/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        })
+        .then(result => result.json())
+        .then(response => {
+          ZoomMtg.init({
+            leaveUrl: meetConfig.leaveUrl,
+            isSupportAV: true,
+            isSupportChat: false,
+            disableJoinAudio: true,
+            screenShare: false,
+            success: function() {
+              ZoomMtg.join({
+                meetingNumber: meetConfig.meetingNumber,
+                userName: meetConfig.userName,
+                userEmail: meetConfig.userEmail,
+                signature: response.signature,
+                apiKey: meetConfig.apiKey,
+                passWord: meetConfig.passWord,
+                success: (success) => {
+                  console.log(success)
+                },
+                error: (error) => {
+                  console.log(error)
+                }
+              })		
+            }
+          })
+      })
+    }
+    window.startMeeting = function(username) {
+      console.log('starting meeting...');
+      meetConfig.userName = username;
+      meetConfig.userEmail = username + '@leistungs-zentrum.de';
+      getSignature(meetConfig);
+      console.log('meeting is on!');
+    }
+
     const dayOfYear = date =>
       Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 

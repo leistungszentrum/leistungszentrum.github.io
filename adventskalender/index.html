@@ -10,6 +10,8 @@
 		<meta name="author" content="LZ" />
 		<link rel="icon" href="favicon.ico" />
 		<meta name="generator" content="Hugo 0.78.2" />
+		<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.1/css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.8.1/css/react-select.css" />
 		<style>
 		body {
 		background: #bbd9ec;
@@ -22,6 +24,8 @@
 		
 		<link rel="stylesheet" type="text/css" href="https://leistungszentrum.github.io/adventskalender/css/lz.css">
 		
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 		<script src="https://leistungszentrum.github.io/adventskalender/js/modernizr.custom.js"></script>
 
 	
@@ -40,7 +44,7 @@ if (!doNotTrack) {
 
 	</head>
 	<body>
-		<div class="container">
+		<div class="container-main">
 			<div id="particles-js"></div>
 								<header class="clearfix">
 					<div class="bgtitle">
@@ -249,9 +253,21 @@ if (!doNotTrack) {
 </footer>
 			</div>
 		</div>
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+				
+		<script src="https://source.zoom.us/1.8.1/lib/vendor/react.min.js"></script>
+		<script src="https://source.zoom.us/1.8.1/lib/vendor/react-dom.min.js"></script>
+		<script src="https://source.zoom.us/1.8.1/lib/vendor/redux.min.js"></script>
+		<script src="https://source.zoom.us/1.8.1/lib/vendor/redux-thunk.min.js"></script>
+		<script src="https://source.zoom.us/1.8.1/lib/vendor/jquery.min.js"></script>
+		<script src="https://source.zoom.us/1.8.1/lib/vendor/lodash.min.js"></script>
+	
+		
+		<script src="https://source.zoom.us/zoom-meeting-1.8.1.min.js"></script>
+		
+		
 		<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-		<script src="https://whereby.dev/embed/whereby-embed.js" type=module></script>
+
+		
 		
 		
 		<script src="https://leistungszentrum.github.io/adventskalender/js/lz.js"></script>
@@ -530,9 +546,9 @@ if (!doNotTrack) {
 						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
 						this.$loading = $( '<div class="og-loading"></div>' );
 						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
-						this.$whereby = $( '<div class="whereby"></div>' );
+						this.$zoom = $( '<div class="zoom"></div>' );
 						this.$closePreview = $( '<span class="og-close"></span>' );
-						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details, this.$whereby);
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details, this.$zoom );
 						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
 						this.$item.append( this.getEl() );
 						if( support ) {
@@ -566,7 +582,7 @@ if (!doNotTrack) {
 						this.$title.html( eldata.title );
 						$desc = this.$description
 						jQuery.get('text/' + eldata.description, function(data) {
-							$desc.html( "<pre class=\"doordesc\">" + data + "</pre>" );
+							$desc.html( "<span class=\"doordesc\">" + data + "</span>" );
 						});
 						if(eldata.buttontext) this.$href.text(eldata.buttontext);
 						else this.$href.text("Drück mich...")
@@ -596,8 +612,9 @@ if (!doNotTrack) {
 							
 							
 							
-							self.$fullimage.css('max-height', '315px');
-							$iframe = $( '<iframe/>' );
+							
+							$('.doorvideo').remove();
+							$iframe = $( '<iframe class="doorvideo"/>' );
 							$iframe
 								.css('display', 'none')
 								.attr('src',  'https://www.youtube.com/embed/' + eldata.href + '?autoplay=1')
@@ -611,16 +628,31 @@ if (!doNotTrack) {
 									self.$loading.delay(500).hide();
 									$iframe.delay(500).fadeIn( 350 );
 								});
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							$('<whereby-embed audio background=off chat=off emptyRoomInvitation=off help=off leaveButton=off minimal people=off precallReview=off recording=off screenshare=off video subdomain=yourcompany room="/your_room"></whereby-embed>').appendTo(this.$whereby);
+							$username = $(`
+								<div class="doorjoin">
+								<div class="doorjoin-inner">
+								<div class="form">
+								<input class="doorjoin-name" type="text" name="name" autocomplete="off" required />
+								<label for="name" class="label-name">
+									<span class="content-name">Name</span>
+								</label>
+								</div>
+								<button type="button" class="btn btn-primary join-btn"></button>
+								</div>
+								</div>
+							`);
+							this.$zoom.append($username);
+							$('.join-btn').click(function() {
+								$username.fadeOut( 350 );
+								self.$zoom
+									.append($('#zmmtg-root'))
+									.ready(function () {
+										$('#zmmtg-root').show();
+										self.$loading.delay(500).hide();
+										self.$zoom.delay(500).fadeIn( 350 );
+										startMeeting($('.doorjoin-name').val());
+									});
+							});
 						}
 
 					},

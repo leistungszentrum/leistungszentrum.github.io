@@ -42,12 +42,12 @@ a {
 	text-decoration: none;
 }
 
-.container {
+.container-main {
 	width: 100%;
 	position: relative;
 }
 
-.container > header {
+.container-main > header {
 	width: 90%;
 	max-width: 1240px;
 	margin: 0 auto;
@@ -55,12 +55,12 @@ a {
 	padding: 0 30px 50px 30px;
 }
 
-.container > header {
+.container-main > header {
 	padding: 60px 30px 50px;
 	text-align: center;
 }
 
-.container > header h1 {
+.container-main > header h1 {
 	font-size: 34px;
 	line-height: 38px;
 	margin: 0 auto;
@@ -68,7 +68,7 @@ a {
 	color: #333;
 }
 
-.container > header h1 span {
+.container-main > header h1 span {
 	display: block;
 	font-size: 20px;
 	font-weight: 300;
