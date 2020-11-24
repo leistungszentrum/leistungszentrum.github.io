@@ -3,6 +3,30 @@ console.log('Loading LZ...');
 $(function() {
     var now = new Date();
 
+    window.makeTimer = function(target, open) {
+      var endTime = open;			
+      endTime = (Date.parse(endTime) / 1000);
+
+      var now = new Date();
+      now = (Date.parse(now) / 1000);
+
+      var timeLeft = endTime - now;
+
+      var days = Math.floor(timeLeft / 86400); 
+      var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+      var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+      var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+      if (hours < "10") { hours = "0" + hours; }
+      if (minutes < "10") { minutes = "0" + minutes; }
+      if (seconds < "10") { seconds = "0" + seconds; }
+
+      $(target + " #days").html(days + "<span></span>");
+      $(target + " #hours").html(hours + "<span></span>");
+      $(target + " #minutes").html(minutes + "<span></span>");
+      $(target + " #seconds").html(seconds + "<span></span>");		
+    }
+
     window.startMeeting = function(target, room) {
       console.log('starting meeting...');
       const jitsi_options = {
@@ -75,52 +99,29 @@ $(function() {
         if (nextdoor < 0 && !isNaN(opendiff)) {
           nextdoor = index;
           $(this).find('.doorthumb').addClass('next');
-          $(this).find('.timer').html('<div id="timer">' +
+          $timer = $('<div id="timer">' +
           '<!-- <div id="days"></div><div class="timersep">:</div> -->' +
           '<div id="hours">00</div><div class="timersep">:</div>' +
           '<div id="minutes">00</div><div class="timersep">:</div>' +
           '<div id="seconds">00</div>' +
           '</div>');
+          $timer.hide().appendTo($(this).find('.timer'));
+          $timer.delay(500).fadeIn( 850 );
         }
       }
     });
 
-    var open = new Date($('.next').parent().data('time'));
-    var millisTillOpen = open - now;
-    if (millisTillOpen < 0) {
-        millisTillOpen += 86400000; // it's after 10am, try 10am tomorrow.
-    }
-    
     if (nextdoor >= 0) {
+      var open = new Date($('.next').parent().data('time'));
+      var millisTillOpen = open - now;
+      if (millisTillOpen < 0) {
+          millisTillOpen += 86400000; // it's after 10am, try 10am tomorrow.
+      }
       setTimeout(function() {
           openDoor();
       }, millisTillOpen);
+      setInterval(function() { makeTimer('#timer', open); }, 1000);
     }
-
-    function makeTimer() {
-        var endTime = open;			
-        endTime = (Date.parse(endTime) / 1000);
-
-        var now = new Date();
-        now = (Date.parse(now) / 1000);
-
-        var timeLeft = endTime - now;
-
-        var days = Math.floor(timeLeft / 86400); 
-        var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-        var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
-        var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-
-        if (hours < "10") { hours = "0" + hours; }
-        if (minutes < "10") { minutes = "0" + minutes; }
-        if (seconds < "10") { seconds = "0" + seconds; }
-
-        $("#days").html(days + "<span></span>");
-        $("#hours").html(hours + "<span></span>");
-        $("#minutes").html(minutes + "<span></span>");
-        $("#seconds").html(seconds + "<span></span>");		
-    }
-    setInterval(function() { makeTimer(); }, 1000);
 
     particlesJS("particles-js", {
         "particles": {
