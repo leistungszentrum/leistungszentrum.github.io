@@ -10,13 +10,16 @@ $(function() {
         parentNode: document.querySelector(target),
         width: '100%',
         height: '100%',
+        configOverwrite: {
+          prejoinPageEnabled: false
+        },
         interfaceConfigOverwrite: {
-          TOOLBAR_BUTTONS: [
-            'microphone', 'camera'
-          ],
+          DEFAULT_BACKGROUND: 'transparent',
+          DEFAULT_LOCAL_DISPLAY_NAME: 'Leistungsträger',
+          TOOLBAR_BUTTONS: [ 'microphone', 'camera' ],
+          DISABLE_VIDEO_BACKGROUND: true,
           MOBILE_APP_PROMO: false,
           SHOW_BRAND_WATERMARK: false,
-          DEFAULT_BACKGROUND: '#474747',
           SHOW_JITSI_WATERMARK: false,
           // JITSI_WATERMARK_LINK: '',
           // BRAND_WATERMARK_LINK: '',

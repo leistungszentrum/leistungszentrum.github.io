@@ -77,10 +77,6 @@ body {
     max-height: 100%;
     max-width: 100%;
 }
-@media screen and (max-width: 650px) {
-	.og-fullimg { display: inline; float: left; width: 50%;}
-	.og-details { float: left; width: 100%; }
-}
 .og-details {
     padding: 0 1vw 0 4%;
     font-family: 'Indie Flower', cursive;
@@ -98,6 +94,26 @@ body {
     line-height: 2.5vw;
     color: #999;
 }
+.og-fullimg {
+    width: 50%;
+    float: left;
+    height: 40%;
+}
+.og-details {
+    width: 50%;
+    float: left;
+    height: 40%;
+}
+@media screen and (max-width: 650px) {
+	.og-fullimg { display: inline; float: left; width: 50%; }
+    .og-details { float: left; width: 100%; }
+    .jitsi { float: left; width: 100%; }
+}
+@media screen and (min-width: 1500px) {
+	.og-fullimg { display: inline; float: left; margin-left: 1%; margin-top: 20vh; width: 48%; height: 60%; }
+    .og-details { position: absolute; float: right; width: 95%; }
+    .jitsi { float: left; width: 48%; margin-top: 20vh; margin-left: 2%; }
+}
 @media screen and (max-width: 650px) {
     .og-details { padding: 0 1vw 0 10%; }
     .og-details h3 { font-size: 8vw; }
@@ -107,11 +123,6 @@ body {
     .og-details { padding: 0 1vw 0 4%; }
     .og-details h3 { font-size: 76px; }
     .og-details p { font-size: 32px; line-height: 40px; }
-}
-.og-fullimg, .og-details {
-    width: 50%;
-    float: left;
-    height: 40%;
 }
 .inactive {
     opacity: 0.35;

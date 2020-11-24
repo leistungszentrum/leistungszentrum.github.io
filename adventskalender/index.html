@@ -251,7 +251,7 @@ if (!doNotTrack) {
 					
 				</ul>
 				<footer>			
-	dev.v4-18.11.20
+	RC1-23.11.20
 </footer>
 			</div>
 		</div>
@@ -617,9 +617,10 @@ if (!doNotTrack) {
 									self.$loading.delay(500).hide();
 									$iframe.delay(500).fadeIn( 350 );
 								});
-							this.$jitsi.empty();
-							this.$jitsi.append(this.$loading);
-							startMeeting('.jitsi', eldata.title);
+							this.$jitsi.empty().append(this.$loading).ready(function () {
+								self.$loading.fadeIn();
+								startMeeting('.jitsi', eldata.title);
+							});
 						}
 					},
 					open : function() {
