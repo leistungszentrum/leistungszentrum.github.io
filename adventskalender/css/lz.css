@@ -107,7 +107,7 @@ body {
     max-width: 100%;
 }
 @media screen and (max-width: 650px) {
-    .og-expander-inner { padding: 30px 30px; }
+    .og-expander-inner { padding: 40px 30px; }
     .og-details { height: auto; padding: 0 1vw 20px 10%; }
     .og-details h3 { font-size: 8vw; line-height: 5vw; margin-top: 0px; }
     .og-details p { font-size: 3vw; line-height: 3.75vw; }
