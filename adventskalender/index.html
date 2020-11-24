@@ -537,7 +537,7 @@ if (!doNotTrack) {
 						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
 						this.$jitsi = $( '<div class="jitsi"><div class="og-loading"></div></div>' );
 						this.$closePreview = $( '<span class="og-close"></span>' );
-						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details, this.$jitsi );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$details, this.$fullimage, this.$jitsi );
 						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
 						this.$item.append( this.getEl() );
 						if( support ) {
