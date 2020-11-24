@@ -11,7 +11,8 @@ $(function() {
         width: '100%',
         height: '100%',
         configOverwrite: {
-          prejoinPageEnabled: false
+          prejoinPageEnabled: false,
+          disableDeepLinking: true,
         },
         interfaceConfigOverwrite: {
           DEFAULT_BACKGROUND: 'transparent',
