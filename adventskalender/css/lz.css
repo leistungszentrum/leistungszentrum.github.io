@@ -118,7 +118,7 @@ body {
     .og-fullimg { display: inline; float: left; margin-left: 0%; margin-bottom: 2vh; width: 100%; height: 35%; }
     .jitsi { display: inline; float: left; margin-left: 0%; width: 100%; height: 35%; }
 }
-@media screen and (min-width: 1049px) {
+@media screen and (min-width: 800px) {
     .og-expander-inner { padding: 50px 30px; }
     .og-details { height: auto; padding: 0 1vw 30px 4%; }
     .og-details h3 { font-size: 76px; line-height: 76px; }
