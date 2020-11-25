@@ -4,7 +4,6 @@ html, body {
 body {
     overflow: scroll !important;
     overflow-x: hidden !important;
-    height: 100%;
 }
 .bgtitle {
     background: url(../images/lz/bg_title.png);
