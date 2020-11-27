@@ -258,6 +258,7 @@ if (!doNotTrack) {
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src='https://meet.jit.si/external_api.js'></script>
 		<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/flowtype.js"></script>
 		
 		
 		<script src="https://leistungszentrum.github.io/adventskalender/js/lz.js"></script>
@@ -530,14 +531,14 @@ if (!doNotTrack) {
 				Preview.prototype = {
 					create : function() {
 						this.$title = $( '<h3></h3>' );
-						this.$description = $( '<p></p>' );
+						this.$description = $( '<div class="fit"></div>' );
 						this.$href = $( '<a href="#" target="_blank" class="linkout">Drück mich...</a>' );
-						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+						this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href ).hide();
 						this.$loading = $( '<div class="og-loading"></div>' );
-						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
+						this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading ).append( this.$details );
 						this.$jitsi = $( '<div class="jitsi"><div class="og-loading"></div></div>' );
-						this.$closePreview = $( '<span class="og-close"></span>' );
-						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$details, this.$fullimage, this.$jitsi );
+						this.$closePreview = $( '<span class="og-info"></span><span class="og-close"></span>' );
+						this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$jitsi );
 						this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
 						this.$item.append( this.getEl() );
 						if( support ) {
@@ -571,9 +572,33 @@ if (!doNotTrack) {
 							};
 
 						this.$title.html( eldata.title );
-						$desc = this.$description
+						$desc = this.$description;
+						$infobtn = $('<span class="og-infoclose"></span>');
+						$infobtn.click(function() {
+							$('.og-details').fadeOut( 500 );
+							$('.og-info').fadeTo(850, 1).fadeTo(850, 0.5);
+						});
+						$('.og-info').click(function() {
+							$('.og-details').fadeIn( 500 );
+							$('.og-info').fadeTo(850, 0.5);
+							setTimeout(function() {
+								$('.og-details').fadeOut( 500 );
+								$('.og-info').fadeTo(850, 1).fadeTo(850, 0.5);
+							}, 10000 );
+						});
 						jQuery.get('text/' + eldata.description, function(data) {
-							$desc.html( "<span class=\"doordesc\">" + data + "</span>" );
+							$desc.html( data ).append($infobtn).ready(function () {
+								$('.fit').flowtype({
+									minFont : 19,
+									maxFont : 30,
+									fontRatio : 30
+								});
+								$('.og-details').delay(500).fadeIn( 850 );
+								setTimeout(function() {
+									$('.og-details').fadeOut( 500 );
+									$('.og-info').fadeTo(850, 1).fadeTo(850, 0.5);
+								}, 10000 );
+							});
 						});
 						if(eldata.buttontext) this.$href.text(eldata.buttontext);
 						else this.$href.text("Drück mich...")
