@@ -91,12 +91,6 @@ body {
     margin-top: 5px;
     margin-bottom: 0px;
 }
-.og-details div {
-    font-weight: 400;
-    color: #d8caca;
-    width: 100%;
-    height: 100%;
-}
 .og-details {
     background-color:rgba(0, 0, 0, 0.8);
     position: absolute;
@@ -120,6 +114,10 @@ body {
     max-width: 100%;
 }
 .fit {
+    font-weight: 400;
+    color: #d8caca;
+    width: 100%;
+    height: 100%;
     line-height: 1.45;
 }
 .og-info {
@@ -154,10 +152,36 @@ body {
 }
 .og-infoclose:hover {
     opacity: 1;
-    -webkit-transition: opacity 1s linear;
-       -moz-transition: opacity 1s linear;
-            transition: opacity 1s linear;
+    -webkit-transition: opacity 0.3s linear;
+       -moz-transition: opacity 0.3s linear;
+            transition: opacity 0.3s linear;
 }
+.og-infoclose >  svg {
+    /* position: absolute; */
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+}
+.og-infoclose > svg circle {
+    stroke-dasharray: 113px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 7px;
+    stroke: rgb(0, 0, 0);
+    fill: none;
+    animation: countdown 10s linear infinite forwards;
+}
+  
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 113px;
+    }
+  }
 @media screen and (max-width: 650px) {
     /* .og-expander-inner { padding: 25px 30px; } */
     .og-details { padding: 20px; }

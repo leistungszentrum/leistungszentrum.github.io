@@ -573,7 +573,7 @@ if (!doNotTrack) {
 
 						this.$title.html( eldata.title );
 						$desc = this.$description;
-						$infobtn = $('<span class="og-infoclose"></span>');
+						$infobtn = $('<div class="og-infoclose"><svg><circle r="18" cx="20" cy="20"></circle></svg></div>');
 						$infobtn.click(function() {
 							$('.og-details').fadeOut( 500 );
 							$('.og-info').fadeTo(850, 1).fadeTo(850, 0.5);
@@ -594,10 +594,10 @@ if (!doNotTrack) {
 									fontRatio : 30
 								});
 								$('.og-details').delay(500).fadeIn( 850 );
-								setTimeout(function() {
-									$('.og-details').fadeOut( 500 );
-									$('.og-info').fadeTo(850, 1).fadeTo(850, 0.5);
-								}, 10000 );
+								
+								
+								
+								
 							});
 						});
 						if(eldata.buttontext) this.$href.text(eldata.buttontext);
