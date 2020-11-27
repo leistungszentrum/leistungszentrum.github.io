@@ -71,7 +71,7 @@ body {
     background: #ebf4ff;
 }
 .og-expander-inner {
-    padding: 20px 30px;
+    padding: 25px 30px;
 }
 .og-grid li.og-expanded > a::after {
     top: 250px;
@@ -111,7 +111,7 @@ body {
     max-width: 100%;
 }
 @media screen and (max-width: 650px) {
-    .og-expander-inner { padding: 30px 30px; }
+    .og-expander-inner { padding: 25px 30px; }
     .og-details { height: auto; padding: 0 1vw 20px 10%; }
     .og-details h3 { font-size: 8vw; line-height: 8vw; margin-top: 0px; }
     .og-details p { font-size: 3vw; line-height: 3.75vw; }
@@ -119,7 +119,7 @@ body {
     .jitsi { display: inline; float: left; margin-left: 0%; width: 100%; height: 35%; }
 }
 @media screen and (min-width: 800px) {
-    .og-expander-inner { padding: 50px 30px; }
+    .og-expander-inner { padding: 25px 30px; }
     .og-details { height: auto; padding: 0 1vw 30px 4%; }
     .og-details h3 { font-size: 76px; line-height: 76px; }
     .og-details p { font-size: 32px; line-height: 40px; }
