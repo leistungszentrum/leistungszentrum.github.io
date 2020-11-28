@@ -61,6 +61,16 @@ $(function() {
       console.log('meeting is on!');
     }
 
+    window.videoStarts = function () {
+      if(typeof window.japi !== "undefined") {
+        window.japi.executeCommand('muteEveryone');
+      }
+      $jitsi_info = $('<div class="jitsi-info">Ruhe zefix!<br/>Leertaschte zum labern!</br>(spacebar to talk)</div>');
+      $jitsi_info.hide().appendTo('.jitsi').ready(function () {
+        $jitsi_info.delay( 500 ).fadeIn( 500 ).delay( 3000 ).fadeOut( 500 );
+      });
+    }
+
     const dayOfYear = date =>
       Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 

@@ -667,7 +667,8 @@ if (!doNotTrack) {
 										.ready(function () {
 											self.$loading.delay(500).hide();
 											$iframe.delay(500).fadeIn( 350 );
-											$vtimer.remove()
+											$vtimer.remove();
+											window.videoStarts();
 										});
 								}, opendiff);
 								setInterval(function() { makeTimer('#vtimer', vtime); }, 1000);
