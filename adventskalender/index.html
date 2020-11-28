@@ -707,6 +707,10 @@ if (!doNotTrack) {
 					},
 					close : function() {
 
+						if(typeof window.room !== "undefined") {
+							window.room.executeCommand('hangup');
+						}
+
 						var self = this,
 							onEndFn = function() {
 								if( support ) {

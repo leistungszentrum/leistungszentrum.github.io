@@ -54,7 +54,7 @@ $(function() {
           $('.jitsi').find('.og-loading').remove();
         }
       }
-      const api = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)
+      window.room = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)
       console.log('meeting is on!');
     }
 
