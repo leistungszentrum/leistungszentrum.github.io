@@ -82,10 +82,6 @@ body {
     padding: 10px;
     width: 90%;
     text-align: center;
-    opacity: 1;
-    -webkit-transition: opacity 0.3s linear;
-       -moz-transition: opacity 0.3s linear;
-            transition: opacity 0.3s linear;
 }
 .og-expander {
     background: #ebf4ff;

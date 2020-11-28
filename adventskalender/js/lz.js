@@ -63,7 +63,11 @@ $(function() {
 
     window.videoStarts = function () {
       if(typeof window.japi !== "undefined") {
-        window.japi.executeCommand('muteEveryone');
+        window.japi.isAudioMuted().then(muted => {
+          if (!muted) {
+            window.japi.executeCommand('toggleAudio');
+          }
+        });
       }
       $jitsi_info = $('<div class="jitsi-info">Ruhe zefix!<br/>Leertaschte zum labern!</br>(spacebar to talk)</div>');
       $jitsi_info.hide().appendTo('.jitsi').ready(function () {
