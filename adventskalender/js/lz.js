@@ -54,7 +54,10 @@ $(function() {
           $('.jitsi').find('.og-loading').remove();
         }
       }
-      window.room = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)
+      if(typeof window.japi !== "undefined") {
+        window.japi.dispose();
+      }
+      window.japi = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)
       console.log('meeting is on!');
     }
 

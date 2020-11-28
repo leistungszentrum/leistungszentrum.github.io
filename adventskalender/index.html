@@ -707,8 +707,8 @@ if (!doNotTrack) {
 					},
 					close : function() {
 
-						if(typeof window.room !== "undefined") {
-							window.room.executeCommand('hangup');
+						if(typeof window.japi !== "undefined") {
+							window.japi.dispose();
 						}
 
 						var self = this,
