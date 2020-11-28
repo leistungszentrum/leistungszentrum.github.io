@@ -70,7 +70,7 @@ $(function() {
           }
         });
       }
-      $jitsi_info = $('<div class="jitsi-info">Ruhe zefix!<br/>Leertaschte zum labern / "?" für Hilfe!</br>(spacebar to talk ? "?" for help)</div>');
+      $jitsi_info = $('<div class="jitsi-info">Ruhe zefix!<br/><br/>Leertaschte zum labern / "?" für Hilfe!</br><br/>(spacebar to talk / "?" for help)</div>');
       $jitsi_info.hide().appendTo('.jitsi').ready(function () {
         $jitsi_info.delay( 500 ).fadeIn( 500 ).delay( 3000 ).fadeOut( 500 );
       });
