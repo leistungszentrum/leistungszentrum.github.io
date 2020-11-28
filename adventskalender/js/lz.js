@@ -66,6 +66,7 @@ $(function() {
         window.japi.isAudioMuted().then(muted => {
           if (!muted) {
             window.japi.executeCommand('toggleAudio');
+            $('.jitsi iframe').focus();
           }
         });
       }

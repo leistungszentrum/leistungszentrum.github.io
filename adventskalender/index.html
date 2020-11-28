@@ -584,7 +584,7 @@ if (!doNotTrack) {
 							setTimeout(function() {
 								$('.og-details').fadeOut( 500 );
 								$('.og-info').fadeTo(850, 1).fadeTo(850, 0.5);
-							}, 10000 );
+							}, 60000 );
 						});
 						jQuery.get('text/' + eldata.description, function(data) {
 							$desc.html( data ).append($infobtn).ready(function () {
@@ -597,7 +597,7 @@ if (!doNotTrack) {
 								setTimeout(function() {
 									$('.og-details').fadeOut( 500 );
 									$('.og-info').fadeTo(850, 1).fadeTo(850, 0.5);
-								}, 10000 );
+								}, 60000 );
 							});
 						});
 						if(eldata.buttontext) this.$href.text(eldata.buttontext);
@@ -649,7 +649,7 @@ if (!doNotTrack) {
 								'<div id="minutes">00</div><div class="timersep">:</div>' +
 								'<div id="seconds">00</div>' +
 								'</div>');
-								$vtimer.hide().appendTo(self.$fullimage);
+								$vtimer.hide().prependTo(self.$fullimage);
 								$vtimer.delay(500).fadeIn( 850 );
 								setTimeout(function() {
 									var autoplay = 1;
@@ -673,23 +673,26 @@ if (!doNotTrack) {
 								}, opendiff);
 								setInterval(function() { makeTimer('#vtimer', vtime); }, 1000);
 							}
-							$iframe
-								.css('display', 'none')
-								.attr('src',  'https://www.youtube.com/embed/' + eldata.href + '?showinfo=0&controls=0&modestbranding=1&autoplay=' + autoplay)
-								.attr('width', '100%')
-								.attr('height', '100%')
-								.attr('frameborder', '0')
-								.attr('allow', 'accelerometer; ' + autoplay_str + 'clipboard-write; encrypted-media; gyroscope; picture-in-picture')
-								.attr('allowfullscreen', 'True')
-								.appendTo(self.$fullimage)
-								.ready(function () {
-									if (is_countdown) {
-										
-									} else {
-										self.$loading.delay(500).hide();
-									}
-									$iframe.delay(500).fadeIn( 350 );
-								});
+							console.log(is_countdown);
+							if (!is_countdown) {
+								$iframe
+									.css('display', 'none')
+									.attr('src',  'https://www.youtube.com/embed/' + eldata.href + '?showinfo=0&controls=0&modestbranding=1&autoplay=' + autoplay)
+									.attr('width', '100%')
+									.attr('height', '100%')
+									.attr('frameborder', '0')
+									.attr('allow', 'accelerometer; ' + autoplay_str + 'clipboard-write; encrypted-media; gyroscope; picture-in-picture')
+									.attr('allowfullscreen', 'True')
+									.appendTo(self.$fullimage)
+									.ready(function () {
+										if (is_countdown) {
+											
+										} else {
+											self.$loading.delay(500).hide();
+										}
+										$iframe.delay(500).fadeIn( 350 );
+									});
+							}
 							this.$jitsi.empty().append(this.$loading).ready(function () {
 								self.$loading.fadeIn();
 								startMeeting('.jitsi', eldata.title);

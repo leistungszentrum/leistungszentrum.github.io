@@ -109,7 +109,7 @@ body {
 }
 .og-details {
     background-color:rgba(0, 0, 0, 0.8);
-    position: absolute;
+    /* position: absolute; */
     display: none;
     padding: 30px;
     font-family: 'Indie Flower', cursive;
@@ -119,6 +119,10 @@ body {
     height: 100%;
 }
 .og-fullimg {
+    background: url(../images/lz/lz-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     width: 100%;
     float: left;
     height: 42.5%;
@@ -137,13 +141,13 @@ body {
     line-height: 1.45;
 }
 .og-info {
-    background: url(../images/lz/iconmonstr-info-thin-240.png);
+    background: url(../images/lz/question-mark-gift.png);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 40px 40px;
+    background-size: 35px 40px;
     opacity: 0.1;
     position: absolute;
-    width: 40px;
+    width: 35px;
     height: 40px;
     top: 20px;
     left: 20px;
@@ -187,7 +191,7 @@ body {
     stroke-width: 7px;
     stroke: rgb(0, 0, 0);
     fill: none;
-    animation: countdown 10s linear infinite forwards;
+    animation: countdown 60s linear infinite forwards;
 }
   
   @keyframes countdown {
@@ -270,7 +274,7 @@ body {
 }
 #vtimer {
     position: absolute;
-    top: 50%;
+    bottom: 17%;
     left: 50%;
     margin: -25px 0 0 -85px;
     display: inline-block;
