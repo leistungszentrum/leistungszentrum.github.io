@@ -118,7 +118,7 @@ $(function() {
           nextdoor = index;
           $(this).find('.doorthumb').addClass('next');
           $timer = $('<div id="timer">' +
-          '<!-- <div id="days"></div><div class="timersep">:</div> -->' +
+          '<div id="days"></div>' +
           '<div id="hours">00</div><div class="timersep">:</div>' +
           '<div id="minutes">00</div><div class="timersep">:</div>' +
           '<div id="seconds">00</div>' +
@@ -138,7 +138,7 @@ $(function() {
       setTimeout(function() {
           openDoor();
       }, millisTillOpen);
-      setInterval(function() { makeTimer('#timer', open); }, 1000);
+      setInterval(function() { makeTimer('#timer', open); var days = $('#timer #days').text(); if (days == 0) { $('#timer #days').hide(); } }, 1000);
     }
 
     particlesJS("particles-js", {

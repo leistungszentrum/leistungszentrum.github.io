@@ -294,9 +294,11 @@ body {
     font-size: 20px;
 }
 #days {
-    float: left;
-    font-size: 20px;
-    color: #000000;
+    position: absolute;
+    top: -16px;
+    left: -30px;
+    font-size: 40px;
+    color: #afafaf;
 }
 #hours {
     float: left;
