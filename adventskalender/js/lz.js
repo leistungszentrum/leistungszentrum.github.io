@@ -41,11 +41,12 @@ $(function() {
         interfaceConfigOverwrite: {
           DEFAULT_BACKGROUND: 'transparent',
           DEFAULT_LOCAL_DISPLAY_NAME: 'Leistungsträger',
-          TOOLBAR_BUTTONS: [ 'microphone', 'camera' ],
-          DISABLE_VIDEO_BACKGROUND: true,
+          TOOLBAR_BUTTONS: [ 'microphone', 'camera', 'tileview' ],
+          VIDEO_QUALITY_LABEL_DISABLED: true,
           MOBILE_APP_PROMO: false,
-          SHOW_BRAND_WATERMARK: false,
-          SHOW_JITSI_WATERMARK: false,
+          // DISABLE_VIDEO_BACKGROUND: true,
+          // SHOW_BRAND_WATERMARK: false,
+          // SHOW_JITSI_WATERMARK: false,
           // JITSI_WATERMARK_LINK: '',
           // BRAND_WATERMARK_LINK: '',
           // DEFAULT_LOGO_URL: '',
@@ -75,6 +76,14 @@ $(function() {
         $jitsi_info.delay( 500 ).fadeIn( 500 ).delay( 3000 ).fadeOut( 500 );
       });
     }
+
+    var jitsiRotate = setInterval(function() {
+      if(typeof window.japi !== "undefined") {
+        var participants = window.japi.getParticipantsInfo();
+        var participant = participants[Math.floor(Math.random() * participants.length)];
+        window.japi.setLargeVideoParticipant(participant.participantId);
+      }
+    }, 4000);
 
     const dayOfYear = date =>
       Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
