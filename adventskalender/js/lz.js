@@ -41,7 +41,7 @@ $(function() {
         interfaceConfigOverwrite: {
           DEFAULT_BACKGROUND: 'transparent',
           DEFAULT_LOCAL_DISPLAY_NAME: 'Leistungsträger',
-          TOOLBAR_BUTTONS: [ 'microphone', 'camera', 'tileview' ],
+          TOOLBAR_BUTTONS: [ 'microphone', 'camera', 'tileview', 'fodeviceselection', 'filmstrip', 'hangup'],
           VIDEO_QUALITY_LABEL_DISABLED: true,
           MOBILE_APP_PROMO: false,
           // DISABLE_VIDEO_BACKGROUND: true,
@@ -58,10 +58,14 @@ $(function() {
       if(typeof window.japi !== "undefined") {
         window.japi.dispose();
       }
-      window.japi = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options)
+      window.japi = new JitsiMeetExternalAPI('meet.jit.si', jitsi_options);
+      window.japi.addEventListener('tileViewChanged', function(event) {
+        window.videoTileView = event.enabled;
+    });
       console.log('meeting is on!');
     }
 
+    window.videoTileView = false;
     window.videoStarts = function () {
       if(typeof window.japi !== "undefined") {
         window.japi.isAudioMuted().then(muted => {
@@ -70,6 +74,9 @@ $(function() {
             $('.jitsi iframe').focus();
           }
         });
+        if(window.videoTileView) {
+          window.japi.executeCommand('toggleTileView');
+        }
       }
       $jitsi_info = $('<div class="jitsi-info">Ruhe zefix!<br/><br/>Leertaschte zum labern / "?" für Hilfe!</br><br/>(spacebar to talk / "?" for help)</div>');
       $jitsi_info.hide().appendTo('.jitsi').ready(function () {
@@ -77,8 +84,9 @@ $(function() {
       });
     }
 
-    var jitsiRotate = setInterval(function() {
-      if(typeof window.japi !== "undefined") {
+    window.videoShuffle = true;
+    var videoShuffleInterval = setInterval(function() {
+      if((typeof window.japi !== "undefined") && window.videoShuffle) {
         var participants = window.japi.getParticipantsInfo();
         var participant = participants[Math.floor(Math.random() * participants.length)];
         window.japi.setLargeVideoParticipant(participant.participantId);
