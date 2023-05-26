@@ -5,7 +5,7 @@ $(function() {
     event.preventDefault();
     $.ajax({
     type: "POST",
-    url: `https://keepthescore.co/api/${board_id}/score/`,
+    url: `https://thingproxy.freeboard.io/fetch/https://keepthescore.co/api/${board_id}/score/`,
     async: false,
     data: JSON.stringify({ "player_id": player_id, "score": 1}),
     contentType: "application/json",
