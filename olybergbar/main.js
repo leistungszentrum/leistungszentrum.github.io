@@ -17,7 +17,7 @@ $(function() {
       alert( "Du bist dabei / You are in / Sinä olet siellä / 你在那里" );
     });
   });
-  $.get(`https://keepthescore.co/api/${board_id}/board/`, function(data, status){
+  $.get(`https://thingproxy.freeboard.io/fetch/https://keepthescore.co/api/${board_id}/board/`, function(data, status){
     $(" #signups" ).html(data['players'][0]["score"] + " Teilnehmer");
   });
 });
