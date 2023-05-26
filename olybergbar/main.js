@@ -1,5 +1,5 @@
 $(function() {
-  var board_id = "qmzcvhcljpmbe";
+  var board_id = "lsbtdyyhxcpzp";
   var player_id = 7194647;
   $( "#signup" ).submit(function( event ) {
     event.preventDefault();
